@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TareaNumeros.VistaPrincipal"
+            xmlns:Vistas="clr-namespace:TareaNumeros.VistasTabs">
+    <!--Se usa el camel case para los titulos de las tabbed-->
+    <Vistas:VistaNumerosPrimos Title="vistaNumeroPrimos" />
+    <Vistas:VistaNumerosPerfectos Title ="vistaNumerosPerfectos" />
+    <Vistas:VistaNumerosAmigos Title ="vistaNumerosAmigos" />
+    <Vistas:VistaNumerosVampiros Title ="vistaNumerosVampiros" />
+</TabbedPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TareaNumeros.VistasTabs.VistaNumerosPrimos"
+             BackgroundColor="White"
+             >
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Padding="15, 30, 15, 15"
+                     Spacing="20">
+            <Label x:Name="lblTitulo"
+                   FontSize="23"
+                   FontFamily="Arial"
+                   TextColor="Black"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"/>
+            <ScrollView HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalScrollBarVisibility="Never">
+                <Editor x:Name="edtNumerosPrimos"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        FontSize="18"
+                        IsReadOnly="true"
+                        FontFamily="Arial"/>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
