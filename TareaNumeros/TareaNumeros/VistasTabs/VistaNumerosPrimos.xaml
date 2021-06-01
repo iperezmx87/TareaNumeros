@@ -2,28 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TareaNumeros.VistasTabs.VistaNumerosPrimos"
-             BackgroundColor="White"
-             >
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"
                      Padding="15, 30, 15, 15"
                      Spacing="20">
+            
             <Label x:Name="lblTitulo"
-                   FontSize="23"
+                       FontSize="23"
+                       FontFamily="Arial"
+                       TextColor="Black"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"/>
+
+            <Label x:Name="lblCalculando"
+                   FontSize="19"
                    FontFamily="Arial"
                    TextColor="Black"
                    HorizontalOptions="FillAndExpand"
                    HorizontalTextAlignment="Center"/>
-            <ScrollView HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalScrollBarVisibility="Never">
-                <Editor x:Name="edtNumerosPrimos"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        FontSize="18"
-                        IsReadOnly="true"
-                        FontFamily="Arial"/>
+
+            <Button Text="Generar"
+                    FontSize="19"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontFamily="Arial"
+                    Clicked="Button_Clicked"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <ScrollView VerticalOptions="FillAndExpand"
+                        x:Name="srclResultados">
+                <StackLayout x:Name="stlNumerosPrimos"
+                             VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                </StackLayout>
             </ScrollView>
         </StackLayout>
     </ContentPage.Content>

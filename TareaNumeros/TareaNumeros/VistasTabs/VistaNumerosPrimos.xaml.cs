@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,12 +16,18 @@ namespace TareaNumeros.VistasTabs
             InitializeComponent();
 
             lblTitulo.Text = $"Mostrar los primeros {limiteNumerosPrimos} números primos";
-
-            // imprimir los numeros
-            ImprimirNumeros();
+            lblCalculando.Text = "";
         }
 
-        private void ImprimirNumeros()
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            lblCalculando.Text = "Generando números primos...";
+            stlNumerosPrimos.Children.Clear();
+
+            await ImprimirNumeros();
+        }
+
+        private async Task ImprimirNumeros()
         {
             // notacion camel case
             // los nombres de las variables se escriben asi:
@@ -37,16 +44,29 @@ namespace TareaNumeros.VistasTabs
             StringBuilder numeroBuilder = new StringBuilder();
 
             // mientras el contador de numeros encontrados sea menor al limite
-            while (contadorNumerosEncontrados <= limiteNumerosPrimos)
+            while (contadorNumerosEncontrados < limiteNumerosPrimos)
             {
                 // buscar los numeros
                 if (CalculaNumeroPrimo(contadorNumeros))
                 {
-                    // se pone ese numero en el texto final a mostrar
-                    numeroBuilder.Append($"{contadorNumerosEncontrados}: {contadorNumeros}{Environment.NewLine}");
-
                     // se encontro un numero primo, se aumenta el contador de encontrados
                     contadorNumerosEncontrados += 1;
+
+                    // se pone ese numero en el texto final a mostrar
+                    await Device.InvokeOnMainThreadAsync(async () =>
+                    {
+                        stlNumerosPrimos.Children.Add(new Label
+                        {
+                            FontSize = 15,
+                            FontFamily = "Arial",
+                            Text = $"{contadorNumerosEncontrados}: {contadorNumeros}",
+                            TextColor = Color.Black,
+                            BackgroundColor = Color.White,
+                            HorizontalOptions = LayoutOptions.FillAndExpand
+                        });
+
+                        await srclResultados.ScrollToAsync(stlNumerosPrimos, ScrollToPosition.End, false);
+                    });
                 }
 
                 // se aumenta la semilla para seguir buscando
@@ -54,7 +74,10 @@ namespace TareaNumeros.VistasTabs
             }
 
             // se pone el texto en el la vista editor
-            edtNumerosPrimos.Text = numeroBuilder.ToString();
+            await Device.InvokeOnMainThreadAsync(() =>
+            {
+                lblCalculando.Text = "Números primos generados";
+            });
         }
 
         private bool CalculaNumeroPrimo(int numeroACalcular)

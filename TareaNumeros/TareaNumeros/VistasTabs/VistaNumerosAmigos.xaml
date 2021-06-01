@@ -1,12 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TareaNumeros.VistasTabs.VistaNumerosAmigos">
+             x:Class="TareaNumeros.VistasTabs.VistaNumerosAmigos"
+             BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Padding="15, 30, 15, 15"
+                     Spacing="20">
+
+            <Label x:Name="lblTitulo"
+                       FontSize="23"
+                       FontFamily="Arial"
+                       TextColor="Black"
+                       HorizontalOptions="FillAndExpand"
+                       HorizontalTextAlignment="Center"/>
+
+            <Label x:Name="lblCalculando"
+                   FontSize="19"
+                   FontFamily="Arial"
+                   TextColor="Black"
+                   HorizontalOptions="FillAndExpand"
+                   HorizontalTextAlignment="Center"/>
+
+            <Button Text="Generar"
+                    FontSize="19"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontFamily="Arial"
+                    Clicked="Button_Clicked"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <ScrollView VerticalOptions="FillAndExpand"
+                        x:Name="srclResultados">
+                <StackLayout x:Name="stlNumerosAmigos"
+                             VerticalOptions="FillAndExpand"
+                             HorizontalOptions="FillAndExpand">
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
